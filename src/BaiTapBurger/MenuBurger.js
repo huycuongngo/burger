@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { GIAM_SO_LUONG, TANG_SO_LUONG, THAY_DOI_SO_LUONG } from './redux/constants/monAn';
 
 
-const TANG_SO_LUONG = 1;
-const GIAM_SO_LUONG = -1;
-
-export default class MenuBurger extends Component {
+class MenuBurger extends Component {
 
   renderMonAn = () => {
 
-    return this.props.dataMonAn.map((item) => {
+    return this.props.danhSachMonAn.map((item) => {
 
 
       return (
@@ -34,7 +33,7 @@ export default class MenuBurger extends Component {
 
   getTongTien = () => {
 
-    return this.props.dataMonAn.reduce((total, item) => {
+    return this.props.danhSachMonAn.reduce((total, item) => {
       return total += item.soLuong * item.giaBan;
     }, 0)
   };
@@ -56,9 +55,8 @@ export default class MenuBurger extends Component {
 
     return (
       <div className='my-5'>
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" className="btn btn-light" data-toggle="modal" data-target="#exampleModal">
           Chọn Thức Ăn
-          {/* <span> ({this.getSoLuong()})</span> */}
         </button>
         <div className="modal fade mt-5" id="exampleModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div style={{ maxWidth: "60vw" }} className="modal-dialog" role="document">
@@ -95,3 +93,30 @@ export default class MenuBurger extends Component {
     )
   }
 }
+
+
+
+let mapStateToProps = (state) => {
+
+  return {
+    danhSachMonAn: state.monAn.dataMonAn,
+
+  }
+}
+
+let mapDispatchToProps = (dispatch) => {
+
+  return {
+    handleThayDoiSoLuong: (idSP, value) => {
+      dispatch({
+        type: THAY_DOI_SO_LUONG,
+        payload: idSP,
+        value: value,
+      })
+    },
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuBurger);
+

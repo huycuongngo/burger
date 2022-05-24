@@ -1,6 +1,54 @@
 .App {
   text-align: center;
+  box-sizing: border-box;
 }
+
+#first-layer {
+  border-top: 50px solid #f4a460 ;
+  border-bottom: 50px solid #f4a460;
+  border-radius: 50% 50% 0 0;
+  max-width: 22%;
+  margin: 0 auto;
+  margin-top: 10px;
+
+}
+
+#second-layer{
+  border: 6px solid green;
+  border-radius: 5px;
+  max-width: 40%;
+  margin-top: 10px;
+
+  margin: 0 auto;
+}
+
+#third-layer{
+  border: 12px solid #daa520;
+  border-radius: 8px;
+  max-width: 30%;
+  margin: 0 auto;
+  margin-top: 10px;
+
+}
+
+#fourth-layer {
+    border: 20px solid #a0522d;
+    border-radius: 10px;
+  max-width: 20%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#last-layer{
+  border-top: 50px solid #f4a460 ;
+  border-bottom: 50px solid #f4a460;
+  border-radius: 0 0 20px 20px;
+  max-width: 22%;
+  margin: 0 auto;
+  margin-top: 10px;
+
+}
+
 
 .App-logo {
   height: 40vmin;
